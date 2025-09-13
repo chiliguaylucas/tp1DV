@@ -10,13 +10,18 @@ class Cuadrado {
     this.vel = vel;
   }
 
-  void mover(char tecla) {
-    if (tecla == 'w' || tecla == 'W') y -= vel;
-    if (tecla == 's' || tecla == 'S') y += vel;
-    if (tecla == 'a' || tecla == 'A') x -= vel;
-    if (tecla == 'd' || tecla == 'D') x += vel;
-  }
+  void mover(char tecla, float dt) {
+    float dx = 0;
+    float dy = 0;
 
+    if (tecla == 'w' || tecla == 'W') dy -= vel * dt;
+    if (tecla == 's' || tecla == 'S') dy += vel * dt;
+    if (tecla == 'a' || tecla == 'A') dx -= vel * dt;
+    if (tecla == 'd' || tecla == 'D') dx += vel * dt;
+
+    x += dx;
+    y += dy;
+  }
   void dibujar() {
     fill(100, 150, 255);
     rect(x, y, tam, tam);
